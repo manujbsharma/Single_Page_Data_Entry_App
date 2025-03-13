@@ -1,0 +1,36 @@
+.row {
+    padding-top: 4px;
+    display: flex;
+    gap: 24px;
+    // position: absolute;
+    // align-self: center;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.gender {
+    padding-top: 2px;
+    padding-bottom: 13px;
+
+    mat-label {
+        margin-left: 30px;
+        margin-right: 30px;
+        font-size: 16px; /* Set the font size you want */
+        font-weight: bold; /* Optional: make it bold */
+    }
+
+    mat-radio-button {
+        margin-left: 20px;
+    }
+}
+
+
+.action {
+    padding-top: 0px;
+    // padding-left:  45px;
+    padding-left: 330px;
+    padding-bottom: 25px;
+    gap: 8px;
+}
