@@ -1,89 +1,73 @@
 <div mat-dialog-title>
     <h1>Employee Form</h1>
 </div>
-<div mat-dialog-content>
-
-    <div class="row">
-
-        <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput type="first name" placeholder="John">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput type="last name" placeholder="Cena">
-        </mat-form-field>
-
-    </div>
-
-    <div class="row">
-
-        <mat-form-field appearance="outline">
-
-            <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="test@email.com">
-
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-
-            <mat-label>Date of Birth</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-
-        </mat-form-field>
-
-    </div>
-
-    <div >
-        <div class="gender">
-            <mat-radio-group aria-label="Select an option">
-                <mat-label class="label">Gender</mat-label>
-                <mat-radio-button value="male" class="radio-button">Male</mat-radio-button>
-                <mat-radio-button value="female" class="radio-button">Female</mat-radio-button>
-                <mat-radio-button value="others" class="radio-button">Others</mat-radio-button>
-            </mat-radio-group>
+<!-- Each form control is bound using formControlName and this links the inputs directly to the empForm object! -->
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label for="firstName">First Name</mat-label>
+                <input matInput id="firstName" type="text" placeholder="John" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <mat-hint align="end">Atleast 3 character</mat-hint>
+                <input matInput type="last name" placeholder="Cena" formControlName="lastName">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="test@email.com" formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob">
+                <mat-hint align="end">DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <div class="gender">
+                <mat-radio-group aria-label="Select an option" formControlName="gender">
+                    <div class="label">Gender</div>
+                    <mat-radio-button value="male" class="radio-button">Male</mat-radio-button>
+                    <mat-radio-button value="female" class="radio-button">Female</mat-radio-button>
+                    <mat-radio-button value="others" class="radio-button">Others</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <h4>Education</h4> -->
+            <mat-form-field appearance="outline">
+                <mat-label>Education</mat-label>
+                <mat-select formControlName="education">
+                    @for (degree of education; track $index) {
+                    <mat-option [value]="degree">{{degree}}</mat-option> }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Company</mat-label>
+                <input matInput type="text" placeholder="XYZ Pvt. Ltd." formControlName="company">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Experience</mat-label>
+                <input matInput type="number" min="0" max="25" step="0.5" placeholder="3" inputmode="numeric"
+                    formControlName="experience">
+                <mat-hint align="end">In years</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Package</mat-label>
+                <input matInput type="number" placeholder="12.5" formControlName="package">
+                <mat-hint align="end">In Rupees</mat-hint>
+            </mat-form-field>
         </div>
     </div>
-        
-    <div class="row">
-
-        <!-- <h4>Education</h4> -->
-        <mat-form-field appearance="outline">
-            <mat-label>Eductation</mat-label>
-            <mat-select>
-                @for (degree of eductation; track $index) {
-                <mat-option [value]="degree">{{degree}}</mat-option> }
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Company</mat-label>
-            <input matInput type="text" placeholder="XYZ Pvt. Ltd.">
-        </mat-form-field>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="warn">Delete</button>
+        <button mat-raised-button color="primary" type="submit">+ Add</button>
     </div>
-
-    <div class="row">
-        <mat-form-field appearance="outline">
-            <mat-label>Expirence</mat-label>
-            <input matInput type="number" placeholder="3">
-            <mat-hint>In years</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Package</mat-label>
-            <input matInput type="number" placeholder="12.5">
-            <mat-hint>In Rupees</mat-hint>
-        </mat-form-field>
-    </div>
-</div>
-
-<div mat-dialog-actions class="action">
-
-    <button mat-raised-button color="primary">+ Add</button>
-
-    <button mat-raised-button>Delete</button>
-
-</div>
+</form>

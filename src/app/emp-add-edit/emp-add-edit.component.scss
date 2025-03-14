@@ -28,9 +28,13 @@
 
 
 .action {
-    padding-top: 0px;
-    // padding-left:  45px;
-    padding-left: 330px;
-    padding-bottom: 25px;
-    gap: 8px;
+    // padding-top: 0px;
+    // // padding-left:  45px;
+    // padding-left: 330px;
+    padding-bottom: 15px;
+    // gap: 8px;
+
+    button{
+        flex:1;
+    }
 }
