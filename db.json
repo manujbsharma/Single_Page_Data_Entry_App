@@ -17,17 +17,6 @@
     "name": "typicode"
   },
   "employees": [
-    {
-      "id": 0,
-      "firstName": "Manuj",
-      "lastName": "Sharma",
-      "email": "manujbandhusharma@gmail.com",
-      "dob": "",
-      "gender": "",
-      "education": "",
-      "company": "",
-      "experience": "",
-      "package": ""
-    }
+
   ]
 }
